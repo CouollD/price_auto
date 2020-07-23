@@ -1,12 +1,10 @@
 # note.comのハッシュタグデータ取得
 import re
-import json
 import pandas as pd
 import sys
 sys.path.append("lib.bs4")
 import openpyxl
 from bs4 import BeautifulSoup
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
