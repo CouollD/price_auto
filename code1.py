@@ -22,4 +22,14 @@ html = driver.page_source.encode('utf-8')
 soup = BeautifulSoup(html, "html.parser")
 
 # idがheikinの要素を表示
-print(soup.select_one(".au_scrap/"))
+# 金
+# print(soup.select(".au_scrap .col"))
+print(soup.select(".au_scrap .col td"))
+print("\n")
+# プラチナ
+print(soup.select(".pt_scrap .col"))
+
+print("\n")
+# 銀
+print(soup.select(".ag_scrap td"))
+# print(soup.find_all(".au_scrap .col td"))
