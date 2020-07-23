@@ -1,5 +1,6 @@
 # note.comのハッシュタグデータ取得
 import re
+import json
 import pandas as pd
 import sys
 sys.path.append("lib.bs4")
