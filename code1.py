@@ -27,33 +27,26 @@ html = driver.page_source.encode('utf-8')
 # BeautifulSoupで扱えるようパース
 soup = BeautifulSoup(html, "html.parser")
 
-prices = soup.select("info clr")
+# 金、プラチナ、銀、パラジウムアイテム名を取得
+items = soup.select("dl dt")
+# htmlデータからテキスト部分だけ抽出
+items = list(map(lambda item:item.text, items))
+print(items)
 
-# idがheikinの要素を表示
-# 金
-au = []
-au_prices = soup.select(".au_scrap .col td")
-for au_price in au_prices:
-    price = au_price.text
-    print(au_price)
+# 金、プラチナ、銀、パラジウムの公開価格を取得
+prices = soup.select("dl dd")
+# htmlデータからテキスト部分だけ抽出
+prices = list(map(lambda price:price.text, prices))
+# 偶数版目の前日比データを除く
+prices = prices[0::2]
 
-print("\n")
-
-# プラチナ
-pt_prices = soup.select(".pt_scrap .col")
-
-for pt_price in pt_prices:
-    price = pt_price.text
-    print(price)
-
-print("\n")
-
-# 銀
-print(soup.select(".ag_scrap"))
-print(soup.find_all(".au_scrap .col td"))
+# 後半は販売価格なので表示しない。
+for i in range(4):
+    data[items[i]] = prices[i]
+print(data)
 
 # 辞書ファイルをjsonに整形
 market_price = json.dumps(data)
-
+print(market_price)
 # 値だけ取り出したい
 # print(soup.find_all(class_="ag_scrap"))
