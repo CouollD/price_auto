@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import json
+import peewee
 
 #ブラウザのオプションを格納する変数
 options = Options()
@@ -45,8 +46,32 @@ for i in range(4):
     data[items[i]] = prices[i]
 print(data)
 
+# idがheikinの要素を表示
+# 金
+# au = []
+# au_prices = soup.select(".au_scrap .col td")
+# for au_price in au_prices:
+#     price = au_price.text
+#     print(au_price)
+
+# print("\n")
+
+# プラチナ
+# pt_prices = soup.select(".pt_scrap .col")
+
+# for pt_price in pt_prices:
+#     price = pt_price.text
+#     print(price)
+
+# print("\n")
+
+# # 銀
+# print(soup.select(".ag_scrap"))
+# print(soup.find_all(".au_scrap .col td"))
+
 # 辞書ファイルをjsonに整形
 market_price = json.dumps(data)
 print(market_price)
 # 値だけ取り出したい
 # print(soup.find_all(class_="ag_scrap"))
+
